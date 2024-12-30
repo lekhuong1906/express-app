@@ -19,10 +19,7 @@
     "lint-staged": "lint-staged"
   },
   "lint-staged": {
-    "src/**/*.{js,scss,css,json}": [
-      "prettier --write",
-      "git add"
-    ]
+    "src/**/*.{js,scss,css,json}": "prettier --write"
   },
   "husky": {
     "hooks": {
@@ -34,6 +31,7 @@
   "description": "",
   "dependencies": {
     "express": "^4.21.2",
-    "express-handlebars": "^8.0.1"
+    "express-handlebars": "^8.0.1",
+    "mongoose": "^8.9.2"
   }
 }
