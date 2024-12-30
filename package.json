@@ -10,7 +10,7 @@
     "prettier": "^3.4.2"
   },
   "scripts": {
-    "prepare": "husky",
+    "prepare": "husky install",
     "format": "prettier --write 'src/**/*.{js,scss,css,json}'",
     "start": "node --watch ./src/index.js",
     "watch": "node-sass --watch ./src/resources/scss/app.scss ./src/public/css/app.css",
@@ -18,10 +18,15 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "lint-staged": {
-    "src/**/*.{js,scss,css,json}": "prettier --write"
+    "src/**/*.{js,scss,css,json}": [
+      "prettier --write",
+      "git add"
+    ]
   },
-  "hooks": {
-    "pre-commit": "lint-staged"
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   },
   "author": "",
   "license": "ISC",
