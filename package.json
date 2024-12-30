@@ -2,11 +2,32 @@
   "name": "app",
   "version": "1.0.0",
   "main": "index.js",
-  "devDependencies": {},
+  "type": "module",
+  "devDependencies": {
+    "husky": "^9.1.7",
+    "lint-staged": "^15.3.0",
+    "node-sass": "^9.0.0",
+    "prettier": "^3.4.2"
+  },
   "scripts": {
+    "prepare": "husky",
+    "format": "prettier --write 'src/**/*.{js,scss,css,json}'",
+    "start": "node --watch ./src/index.js",
+    "watch": "node-sass --watch ./src/resources/scss/app.scss ./src/public/css/app.css",
+    "build": "node-sass ./src/resources/scss/app.scss ./src/public/app.css",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "lint-staged": {
+    "src/**/*.{js,scss,css,json}": "prettier --write"
+  },
+  "hooks": {
+    "pre-commit": "lint-staged"
   },
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "express": "^4.21.2",
+    "express-handlebars": "^8.0.1"
+  }
 }
