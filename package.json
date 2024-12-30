@@ -10,7 +10,7 @@
     "prettier": "^3.4.2"
   },
   "scripts": {
-    "prepare": "husky install",
+    "prepare": "husky",
     "format": "prettier --write 'src/**/*.{js,scss,css,json}'",
     "start": "node --watch ./src/index.js",
     "watch": "node-sass --watch ./src/resources/scss/app.scss ./src/public/css/app.css",
