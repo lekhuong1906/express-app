@@ -2,7 +2,11 @@ import express from 'express';
 import { engine } from 'express-handlebars';
 import * as path from 'path';
 import route from './routes/index.js';
+import * as db from './config/db/index.js';
 const __dirname = import.meta.dirname;
+
+//db_connect
+db.connect();
 
 const app = express();
 console.log(path.join(__dirname, 'views'));

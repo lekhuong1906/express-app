@@ -1,3 +1,11 @@
 import mongoose from 'mongoose';
 
-await mongoose.connect('mongodb://MongoDB-7.0/').then(() => console.log('Connected!'));
+async function connect() {
+    try {
+        await mongoose.connect('mongodb://MongoDB-7.0/blog').then(() => console.log('Connected!'));
+    } catch (error) {
+        console.log('Connect failure !!!');
+    }
+}
+
+export { connect };
