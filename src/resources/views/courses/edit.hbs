@@ -1,0 +1,16 @@
+<div class="container">
+    <h1>Edit</h1>
+    <form method="post" action="/courses/{{course._id}}/update?_method=PUT">
+        <div class="mb-3">
+            <label for="name" class="form-label">Course Name</label>
+            <input type="text" class="form-control" id="name" value="{{course.name}}" name="name">
+            <div class="form-text">We'll never share your email with anyone else.</div>
+        </div>
+        <div class="mb-3">
+            <label for="description" class="form-label">Course Description</label>
+            <textarea type="password" class="form-control" id="description"
+                name="description">{{course.description}}</textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
