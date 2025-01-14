@@ -18,11 +18,54 @@
                 <td>{{this.description}}</td>
                 <td>{{this.createdAt}}</td>
                 <td>
-                    <a href="/courses/{{this._id}}/show">Detail</a>
                     <a href="/courses/{{this._id}}/edit">Edit</a>
+                    <a href="" data-bs-toggle="modal" data-id="{{this._id}}" data-bs-target="#staticBackdrop">Delete</a>
                 </td>
             </tr>
             {{/each}}
         </tbody>
     </table>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Deleted Confirm</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Bạn có chắc muốn xóa item này
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button id="delete-confirm" type="button" class="btn btn-danger">Confirm</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<form name="form-submit" method="post"></form>
+
+<script>
+
+    let courseId;
+    let exampleModal = document.getElementById('staticBackdrop')
+    let btnConfirm = document.getElementById('delete-confirm');
+    let form = document.forms['form-submit'];
+
+
+    exampleModal.addEventListener('show.bs.modal', function (event) {
+        // Button that triggered the modal
+        let button = event.relatedTarget
+        // Extract info from data-bs-* attributes
+        courseId = button.getAttribute('data-id')
+        // If necessary, you could initiate an AJAX request here
+    })
+    btnConfirm.onclick = function () {
+        form.action = '/courses/' + courseId + '/destroy?_method=DELETE';
+        form.submit();
+    }
+</script>

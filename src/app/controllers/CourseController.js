@@ -39,4 +39,11 @@ export default class CourseController {
     update(req, res, next) {
         CourseModel.updateOne({ _id: req.params.id, name: req.body.name, description: req.body.description }).then(() => res.redirect('/me')).catch(next);
     }
+
+    // [DELETE] /courses/:id/destroy
+    destroy(req, res, next) {
+        CourseModel.deleteOne({ _id: req.params.id })
+            .then(() => res.redirect('back'))
+            .catch(next)
+    }
 }
