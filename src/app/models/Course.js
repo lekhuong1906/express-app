@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import MongooseDelete from 'mongoose-delete';
 
 const Schema = mongoose.Schema;
 const ObjectId = Schema.ObjectId;
@@ -9,6 +10,8 @@ const Course = new Schema({
 }, {
     timestamps: true
 });
+
+Course.plugin(MongooseDelete, { deletedBy: true, deletedAt: true, deletedByType: String, overrideMethods: 'all' })
 
 const CourseModel = mongoose.model('Course', Course);
 

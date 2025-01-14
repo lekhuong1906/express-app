@@ -42,7 +42,7 @@ export default class CourseController {
 
     // [DELETE] /courses/:id/destroy
     destroy(req, res, next) {
-        CourseModel.deleteOne({ _id: req.params.id })
+        CourseModel.delete({ _id: req.params.id })
             .then(() => res.redirect('back'))
             .catch(next)
     }
