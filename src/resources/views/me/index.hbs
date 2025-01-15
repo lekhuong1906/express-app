@@ -1,7 +1,12 @@
 <div class="container">
     <div class="row">
-    <h1>My Course</h1>
-    <a href="/me/trash">Thùng rác</a>
+        <h1>My Course</h1>
+        <a href="/me/trash">Thùng rác</a>
+    </div>
+    <div class="row">
+        {{{sortable 'name' _sort}}}
+        {{!-- <a href="?_sort&column=name&type=asc" class="col-3 btn btn-default">Name Asc</a> --}}
+        {{!-- <a href="?_sort&column=name&type=desc" class="col-3 btn btn-success">Name Desc</a> --}}
     </div>
     <table class="table">
         <thead>
@@ -28,14 +33,14 @@
             {{else}}
             <tr>
                 <td colspan="5">
-                    Thùng rác trống 
+                    Thùng rác trống
                     <a href="/me">Danh sách khóa học</a>
                 </td>
             </tr>
             {{/each}}
         </tbody>
     </table>
-</div>
+</>
 
 <!-- Modal -->
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
