@@ -4,16 +4,7 @@ import * as ultil from '../../util/mongoose.js'
 export default class MeController {
     //[GET] /courses
     async index(req, res, next) {
-        let coursesQuery = CourseModel.find();
-
-        const isValidType = ['asc', 'desc'].includes(req.query.type);
-        if (req.query.hasOwnProperty('_sort')) {
-            coursesQuery = coursesQuery.sort({
-                [req.query.column]: isValidType ? (req.query.type == 'asc' ? 1 : -1) : 1
-            })
-        }
-
-        const courses = await coursesQuery;
+        let courses = await CourseModel.find().sortable(req);
 
         res.render('me/index', { courses: ultil.multipleMongooseToObject(courses) });
     }

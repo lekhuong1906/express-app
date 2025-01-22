@@ -5,6 +5,7 @@ import route from './routes/index.js';
 import methodOverride from 'method-override';
 import * as db from './config/db/index.js';
 import SortMiddleware from './app/middlewares/SortMiddleware.js';
+import handlebars from './helpers/handlebars.js';
 const __dirname = import.meta.dirname;
 
 //db_connect
@@ -25,24 +26,7 @@ app.engine(
     '.hbs',
     engine({
         extname: '.hbs',
-        helpers: {
-            sum: (a, b) => a + b,
-            sortable: (field, sort) => {
-                const types = {
-                    default: 'desc',
-                    asc: 'desc',
-                    desc: 'asc'
-                }
-                const type = types[sort.type];
-
-                if (type == 'default' || type == 'desc') {
-                    return `<a href="?_sort&column=${field}&type=${type}" class="col-3 btn btn-default">${field} ${sort.type}</a>`;
-                } else {
-                    return `<a href="?_sort&column=${field}&type=${type}" class="col-3 btn btn-default">${field} ${sort.type}</a>`;
-                }
-
-            }
-        }
+        helpers: handlebars
     }),
 );
 app.set('view engine', '.hbs');
